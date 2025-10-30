@@ -9,11 +9,13 @@ public class Proton implements Particle {
     public Proton(int x, int y) {
         this.x = x;
         this.y = y;
+        size = 20;
     }
 
     @Override
     public void draw(PApplet window) {
         window.ellipse(x, y, size, size);
+        window.fill(100, 100, 100);
     }
 
     @Override

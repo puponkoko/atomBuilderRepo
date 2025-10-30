@@ -2,20 +2,23 @@ import processing.core.PApplet;
 
 
 public class Simulation extends PApplet {
+    Proton obj;
+
     public void settings() {
         size(800, 800);   // set the window size
     }
 
 
     public void setup() {
+        obj = new Proton(200, 200);
+
     }
 
 
     public void draw() {
         background(0);
-        Proton obj = new Proton(100, 100);
-
         obj.draw(this);
+
     }
 
 
