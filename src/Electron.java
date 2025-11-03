@@ -4,6 +4,7 @@ public class Electron implements Particle {
         private int x, y;
         private int size;
         private int charge = -1;
+        private boolean isClicked;
 
         public Electron(int x, int y) {
             this.x = x;
@@ -13,7 +14,17 @@ public class Electron implements Particle {
 
     @Override
     public void draw(PApplet window) {
-        window.ellipse(x, y, size, size);
+        window.fill(255, 0, 0);
+        if (window.mousePressed && Math.abs(window.mouseX - getX()) <= 10 && Math.abs(window.mouseY - getY()) <= 10 && !isClicked) {
+            System.out.println("test");
+            isClicked = true;
+            window.ellipse(window.mouseX, window.mouseY, size, size);
+        } else if (window.mousePressed && isClicked){
+            window.ellipse(window.pmouseX, window.pmouseY, size, size);
+        } else {
+            window.ellipse(600, 400, size, size);
+            isClicked = false;
+        }
     }
 
         @Override

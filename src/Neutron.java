@@ -4,15 +4,27 @@ public class Neutron implements Particle {
     private int x, y;
     private int size;
     private int charge = 0;
+    private boolean isClicked;
 
     public Neutron(int x, int y) {
         this.x = x;
         this.y = y;
+        size = 20;
     }
 
     @Override
     public void draw(PApplet window) {
-        window.ellipse(x, y, size, size);
+        window.fill(211);
+        if (window.mousePressed && Math.abs(window.mouseX - getX()) <= 20 && Math.abs(window.mouseY - getY()) <= 20 && !isClicked) {
+            System.out.println("test");
+            isClicked = true;
+            window.ellipse(window.mouseX, window.mouseY, size, size);
+        } else if (window.mousePressed && isClicked){
+            window.ellipse(window.pmouseX, window.pmouseY, size, size);
+        } else {
+            window.ellipse(500, 400, size, size);
+            isClicked = false;
+        }
     }
 
     @Override
