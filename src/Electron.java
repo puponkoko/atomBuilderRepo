@@ -5,11 +5,15 @@ public class Electron implements Particle {
         private int size;
         private int charge = -1;
         private boolean isClicked;
+        private int magnetFactor;
+        private int randomAngle;
 
         public Electron(int x, int y) {
             this.x = x;
             this.y = y;
             size = 10;
+            magnetFactor = 30;
+            randomAngle = (int) (Math.random() * 361);
         }
 
     @Override
@@ -17,20 +21,29 @@ public class Electron implements Particle {
         window.fill(255, 0, 0);
         if (window.mousePressed && Math.abs(window.mouseX - getX()) <= 10 && Math.abs(window.mouseY - getY()) <= 10 && !isClicked) {
             System.out.println("test");
+            randomAngle = (int) (Math.random() * 361);
             isClicked = true;
             window.ellipse(window.mouseX, window.mouseY, size, size);
             setX(window.mouseX);
             setY(window.mouseY);
         } else if (window.mousePressed && isClicked) {
+            window.ellipse(300, 200, size * 30, size * 30);
             window.ellipse(window.pmouseX, window.pmouseY, size, size);
             setX(window.pmouseX);
             setY(window.pmouseY);
         } else if (getY() < 400) {
-            window.ellipse(500, 200, size, size);
-            setX(500);
-            setY(200);
+            //window.ellipse(300, 200, size * magnetFactor, size * magnetFactor);
+
+            int newX = (int) (((Math.abs(Math.cos(Math.toRadians(randomAngle)))) * (size * magnetFactor)) + 200);
+            int newY = (int) (((Math.abs(Math.sin(Math.toRadians(randomAngle)))) * (size * magnetFactor)));
+
+            System.out.println(newX + " " + newY);
+            window.ellipse(newX, newY, size , size);
+
+//            setX(500);
+//            setY(200);
             // System.out.println("Less than 400");
-            isClicked = false;
+            isClicked = true;
         } else {
             window.ellipse(500, 500, size, size);
             setX(500);
