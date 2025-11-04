@@ -22,7 +22,7 @@ public class Electron implements Particle {
         } else if (window.mousePressed && isClicked){
             window.ellipse(window.pmouseX, window.pmouseY, size, size);
         } else {
-            window.ellipse(600, 400, size, size);
+            window.ellipse(500, 500, size, size);
             isClicked = false;
         }
     }

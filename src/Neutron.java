@@ -22,7 +22,7 @@ public class Neutron implements Particle {
         } else if (window.mousePressed && isClicked){
             window.ellipse(window.pmouseX, window.pmouseY, size, size);
         } else {
-            window.ellipse(500, 400, size, size);
+            window.ellipse(400, 500, size, size);
             isClicked = false;
         }
     }
