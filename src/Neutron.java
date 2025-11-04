@@ -19,10 +19,22 @@ public class Neutron implements Particle {
             System.out.println("test");
             isClicked = true;
             window.ellipse(window.mouseX, window.mouseY, size, size);
-        } else if (window.mousePressed && isClicked){
+            setX(window.mouseX);
+            setY(window.mouseY);
+        } else if (window.mousePressed && isClicked) {
             window.ellipse(window.pmouseX, window.pmouseY, size, size);
+            setX(window.pmouseX);
+            setY(window.pmouseY);
+        } else if (getY() < 400) {
+            window.ellipse(400, 200, size, size);
+            setX(400);
+            setY(200);
+            // System.out.println("Less than 400");
+            isClicked = false;
         } else {
             window.ellipse(400, 500, size, size);
+            setX(400);
+            setY(500);
             isClicked = false;
         }
     }

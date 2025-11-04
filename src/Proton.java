@@ -30,10 +30,14 @@ public class Proton implements Particle {
             setY(window.pmouseY);
         } else if (getY() < 400) {
             window.ellipse(300, 200, size, size);
+            setX(300);
+            setY(200);
            // System.out.println("Less than 400");
             isClicked = false;
         } else {
             window.ellipse(300, 500, size, size);
+            setX(300);
+            setY(500);
             isClicked = false;
         }
     }

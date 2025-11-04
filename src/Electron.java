@@ -19,10 +19,22 @@ public class Electron implements Particle {
             System.out.println("test");
             isClicked = true;
             window.ellipse(window.mouseX, window.mouseY, size, size);
-        } else if (window.mousePressed && isClicked){
+            setX(window.mouseX);
+            setY(window.mouseY);
+        } else if (window.mousePressed && isClicked) {
             window.ellipse(window.pmouseX, window.pmouseY, size, size);
+            setX(window.pmouseX);
+            setY(window.pmouseY);
+        } else if (getY() < 400) {
+            window.ellipse(500, 200, size, size);
+            setX(500);
+            setY(200);
+            // System.out.println("Less than 400");
+            isClicked = false;
         } else {
             window.ellipse(500, 500, size, size);
+            setX(500);
+            setY(500);
             isClicked = false;
         }
     }
