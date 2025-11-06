@@ -5,11 +5,15 @@ public class Neutron implements Particle {
     private int size;
     private int charge = 0;
     private boolean isClicked;
+    private int magnetFactor;
+    private int randomAngle;
 
     public Neutron(int x, int y) {
         this.x = x;
         this.y = y;
         size = 20;
+        magnetFactor = 2;
+        randomAngle = (int) (Math.random() * 361);
     }
 
     @Override
@@ -25,10 +29,13 @@ public class Neutron implements Particle {
             window.ellipse(window.pmouseX, window.pmouseY, size, size);
             setX(window.pmouseX);
             setY(window.pmouseY);
-        } else if (getY() < 400) {
-            window.ellipse(400, 200, size, size);
-            setX(400);
-            setY(200);
+        } else if (getX() < 550 && getX() > 250 && getY() < 350 && getY() > 50) {
+            //System.out.println("TRUE");
+            int newX = (int) (((Math.cos(Math.toRadians(randomAngle)))) * (size * magnetFactor/2)) + 400;
+            int newY = (int) (((Math.sin(Math.toRadians(randomAngle)))) * (size * magnetFactor/2)) + 200;
+
+           // System.out.println(newX + " " + newY);
+            window.ellipse(newX, newY, size , size);
             // System.out.println("Less than 400");
             isClicked = false;
         } else {

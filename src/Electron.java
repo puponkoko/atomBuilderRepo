@@ -27,17 +27,17 @@ public class Electron implements Particle {
             setX(window.mouseX);
             setY(window.mouseY);
         } else if (window.mousePressed && isClicked) {
-            window.ellipse(300, 200, size * 30, size * 30);
+            // window.ellipse(300, 200, size * 30, size * 30);
             window.ellipse(window.pmouseX, window.pmouseY, size, size);
             setX(window.pmouseX);
             setY(window.pmouseY);
-        } else if (getY() < 400) {
+        } else if (getX() < 550 && getX() > 250 && getY() < 350 && getY() > 50) {
             //window.ellipse(300, 200, size * magnetFactor, size * magnetFactor);
 
-            int newX = (int) (((Math.abs(Math.cos(Math.toRadians(randomAngle)))) * (size * magnetFactor)) + 200);
-            int newY = (int) (((Math.abs(Math.sin(Math.toRadians(randomAngle)))) * (size * magnetFactor)));
+            int newX = (int) (((Math.cos(Math.toRadians(randomAngle)))) * (size * magnetFactor/2)) + 400;
+            int newY = (int) (((Math.sin(Math.toRadians(randomAngle)))) * (size * magnetFactor/2)) + 200;
 
-            System.out.println(newX + " " + newY);
+            //System.out.println(newX + " " + newY);
             window.ellipse(newX, newY, size , size);
 
 //            setX(500);

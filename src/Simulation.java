@@ -15,13 +15,22 @@ public class Simulation extends PApplet {
 
 
     public void setup() {
-
+        noStroke();
 
     }
 
 
     public void draw() {
-        background(255);
+        background(245, 245, 220);
+        fill(0);
+        textSize(32);
+        text("Mass Number: " + (getProtons() + getNeutrons()), 400, 430);
+        text("Atomic Number: " + getProtons(), 400, 465);
+        text("Protons: " + getProtons(), 400, 500);
+        text("Neutrons: " + getNeutrons(), 400, 535);
+        text("Electrons: " + getElectrons(), 400, 570);
+        fill(255);
+        ellipse(400, 200, 300, 300);
         if (mousePressed && counter < 1 && mouseX < 267) {
             obj = new Proton(mouseX, mouseY);
             counter++;
@@ -41,8 +50,38 @@ public class Simulation extends PApplet {
         }
         for (Particle particle: particles)
             particle.draw(this);
-        System.out.println("Size: " + particles.size());
-        System.out.println("Counter: " + counter);
+        //System.out.println("Size: " + particles.size());
+        //System.out.println("Counter: " + counter);
+    }
+
+    public int getProtons() {
+        int counter = 0;
+        for (Particle particle: particles) {
+            if (particle instanceof Proton) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    public int getNeutrons() {
+        int counter = 0;
+        for (Particle particle: particles) {
+            if (particle instanceof Neutron) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    public int getElectrons() {
+        int counter = 0;
+        for (Particle particle: particles) {
+            if (particle instanceof Electron) {
+                counter++;
+            }
+        }
+        return counter;
     }
 
     public static void main(String[] args) {

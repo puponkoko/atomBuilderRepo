@@ -8,16 +8,21 @@ public class Proton implements Particle {
     private int size;
     private int charge = 1;
     private boolean isClicked;
+    private int magnetFactor;
+    private int randomAngle;
 
     public Proton(int x, int y) {
         this.x = x;
         this.y = y;
         size = 20;
+        magnetFactor = 2;
+        randomAngle = (int) (Math.random() * 361);
     }
 
     @Override
     public void draw(PApplet window) {
         window.fill(0, 0, 255);
+        //System.out.println(getX() + ", " + getY());
         if (window.mousePressed && Math.abs(window.mouseX - getX()) <= 20 && Math.abs(window.mouseY - getY()) <= 20 && !isClicked) {
             System.out.println("test");
             isClicked = true;
@@ -28,11 +33,12 @@ public class Proton implements Particle {
             window.ellipse(window.pmouseX, window.pmouseY, size, size);
             setX(window.pmouseX);
             setY(window.pmouseY);
-        } else if (getY() < 400) {
-            window.ellipse(300, 200, size, size);
-            setX(300);
-            setY(200);
-           // System.out.println("Less than 400");
+        } else if (getX() < 550 && getX() > 250 && getY() < 350 && getY() > 50) {
+            int newX = (int) (((Math.cos(Math.toRadians(randomAngle)))) * (size * magnetFactor/2)) + 400;
+            int newY = (int) (((Math.sin(Math.toRadians(randomAngle)))) * (size * magnetFactor/2)) + 200;
+
+        //    System.out.println(newX + " " + newY);
+            window.ellipse(newX, newY, size , size);
             isClicked = false;
         } else {
             window.ellipse(300, 500, size, size);
