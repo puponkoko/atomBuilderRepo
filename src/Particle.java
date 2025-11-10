@@ -10,5 +10,7 @@ public interface Particle {
     void setY(int y);
     void setSize(int size);
     int getCharge();
+    void setListStatus(boolean b);
+    boolean getListStatus();
     void draw(PApplet window);
 }

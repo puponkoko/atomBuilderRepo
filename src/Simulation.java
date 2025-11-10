@@ -48,6 +48,7 @@ public class Simulation extends PApplet {
             if (obj.getY() < 400 && !mousePressed && counter > 0) {
                 counter = 0;
                 particles.add(obj);
+                obj.setListStatus(true);
             }
         }
         for (Particle particle: particles)

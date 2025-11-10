@@ -7,6 +7,7 @@ public class Electron implements Particle {
         private boolean isClicked;
         private int magnetFactor;
         private int randomAngle;
+        private boolean isInList;
 
         public Electron(int x, int y) {
             this.x = x;
@@ -14,12 +15,13 @@ public class Electron implements Particle {
             size = 10;
             magnetFactor = 30;
             randomAngle = (int) (Math.random() * 361);
+            isInList = false;
         }
 
     @Override
     public void draw(PApplet window) {
         window.fill(255, 0, 0);
-        if (window.mousePressed && Math.abs(window.mouseX - getX()) <= 10 && Math.abs(window.mouseY - getY()) <= 10 && !isClicked) {
+        if (window.mousePressed && !isClicked && !getListStatus()) {
             System.out.println("test");
             randomAngle = (int) (Math.random() * 361);
             isClicked = true;
@@ -43,9 +45,8 @@ public class Electron implements Particle {
 //            setX(500);
 //            setY(200);
             // System.out.println("Less than 400");
-            isClicked = true;
+            isClicked = false;
         } else {
-            window.ellipse(500, 500, size, size);
             setX(500);
             setY(500);
             isClicked = false;
@@ -79,6 +80,16 @@ public class Electron implements Particle {
         @Override
         public int getCharge() {
             return charge;
+        }
+
+        @Override
+        public void setListStatus(boolean b) {
+            isInList = b;
+        }
+
+        @Override
+        public boolean getListStatus() {
+            return isInList;
         }
 }
 

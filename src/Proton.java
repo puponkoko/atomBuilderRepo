@@ -10,6 +10,7 @@ public class Proton implements Particle {
     private boolean isClicked;
     private int magnetFactor;
     private int randomAngle;
+    private boolean isInList;
 
     public Proton(int x, int y) {
         this.x = x;
@@ -17,13 +18,14 @@ public class Proton implements Particle {
         size = 20;
         magnetFactor = 2;
         randomAngle = (int) (Math.random() * 361);
+        isInList = false;
     }
 
     @Override
     public void draw(PApplet window) {
         window.fill(0, 0, 255);
         //System.out.println(getX() + ", " + getY());
-        if (window.mousePressed && Math.abs(window.mouseX - getX()) <= 20 && Math.abs(window.mouseY - getY()) <= 20 && !isClicked) {
+        if (window.mousePressed && !isClicked && !getListStatus()) {
             System.out.println("test");
             isClicked = true;
             window.ellipse(window.mouseX, window.mouseY, size, size);
@@ -41,7 +43,6 @@ public class Proton implements Particle {
             window.ellipse(newX, newY, size , size);
             isClicked = false;
         } else {
-            window.ellipse(300, 500, size, size);
             setX(300);
             setY(500);
             isClicked = false;
@@ -75,6 +76,16 @@ public class Proton implements Particle {
     @Override
     public int getCharge() {
         return charge;
+    }
+
+    @Override
+    public void setListStatus(boolean b) {
+        isInList = b;
+    }
+
+    @Override
+    public boolean getListStatus() {
+        return isInList;
     }
 
     public void update() {
