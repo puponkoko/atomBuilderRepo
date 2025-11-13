@@ -8,6 +8,7 @@ public class Electron implements Particle {
         private int magnetFactor;
         private int randomAngle;
         private boolean isInList;
+        private int time;
 
         public Electron(int x, int y) {
             this.x = x;
@@ -21,9 +22,9 @@ public class Electron implements Particle {
     @Override
     public void draw(PApplet window) {
         window.fill(255, 0, 0);
+        randomAngle = (int) (Math.random() * 361);
         if (window.mousePressed && !isClicked && !getListStatus()) {
             System.out.println("test");
-            randomAngle = (int) (Math.random() * 361);
             isClicked = true;
             window.ellipse(window.mouseX, window.mouseY, size, size);
             setX(window.mouseX);
@@ -35,7 +36,6 @@ public class Electron implements Particle {
             setY(window.pmouseY);
         } else if (getX() < 550 && getX() > 250 && getY() < 350 && getY() > 50) {
             //window.ellipse(300, 200, size * magnetFactor, size * magnetFactor);
-
             int newX = (int) (((Math.cos(Math.toRadians(randomAngle)))) * (size * magnetFactor/2)) + 400;
             int newY = (int) (((Math.sin(Math.toRadians(randomAngle)))) * (size * magnetFactor/2)) + 200;
 

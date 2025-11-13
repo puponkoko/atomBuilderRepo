@@ -7,6 +7,8 @@ public class Simulation extends PApplet {
     Particle obj;
     ArrayList<Particle> particles = new ArrayList<>();
     int counter = 0;
+   // boolean shiftIsPressed = false;
+    //int shiftCounter = 0;
     String[] elements = {"N/A", "Hydrogen", "Helium", "Lithium", "Beryllium", "Boron", "Carbon", "Nitrogen", "Oxygen", "Fluorine", "Neon", "Sodium", "Magnesium", "Aluminum", "Silicon", "Phosphorus", "Sulfur", "Chlorine", "Argon", "Potassium", "Calcium", "Scandium", "Titanium", "Vanadium", "Chromium", "Manganese", "Iron", "Cobalt", "Nickel", "Copper", "Zinc", "Gallium", "Germanium", "Arsenic", "Selenium", "Bromine", "Krypton", "Rubidium", "Strontium", "Yttrium", "Zirconium", "Niobium", "Molybdenum", "Technetium", "Ruthenium", "Rhodium", "Palladium", "Silver", "Cadmium", "Indium", "Tin", "Antimony", "Tellurium", "Iodine", "Xenon", "Cesium", "Barium", "Lanthanum", "Cerium", "Praseodymium", "Neodymium", "Promethium", "Samarium", "Europium", "Gadolinium", "Terbium", "Dysprosium", "Holmium", "Erbium", "Thulium", "Ytterbium", "Lutetium", "Hafnium", "Tantalum", "Tungsten", "Rhenium", "Osmium", "Iridium", "Platinum", "Gold", "Mercury", "Thallium", "Lead", "Bismuth", "Polonium", "Astatine", "Radon", "Francium", "Radium", "Actinium", "Thorium", "Protactinium", "Uranium", "Neptunium", "Plutonium", "Americium", "Curium", "Berkelium", "Californium", "Einsteinium", "Fermium", "Mendelevium", "Nobelium", "Lawrencium", "Rutherfordium", "Dubnium", "Seaborgium", "Bohrium", "Hassium", "Meitnerium", "Darmstadtium", "Roentgenium", "Copernicium", "Nihonium", "Flerovium", "Moscovium", "Livermorium", "Tennessine", "Oganesson"};
 
     public void settings() {
@@ -16,7 +18,7 @@ public class Simulation extends PApplet {
 
 
     public void setup() {
-        noStroke();
+        //noStroke();
 
     }
 
@@ -25,12 +27,12 @@ public class Simulation extends PApplet {
         background(245, 245, 220);
         fill(0);
         textSize(32);
-        text("Mass Number: " + (getProtons() + getNeutrons()), 400, 430);
-        text("Atomic Number: " + getProtons(), 400, 465);
-        text("Protons: " + getProtons(), 400, 500);
-        text("Neutrons: " + getNeutrons(), 400, 535);
-        text("Electrons: " + getElectrons(), 400, 570);
-        text("Element: " + elements[getProtons()], 400, 605);
+        text("Mass Number: " + (getProtons() + getNeutrons()), 280, 430);
+        text("Atomic Number: " + getProtons(), 265, 465);
+        text("Protons: " + getProtons(), 325, 500);
+        text("Neutrons: " + getNeutrons(), 310, 535);
+        text("Electrons: " + getElectrons(), 310, 570);
+        text("Element: " + elements[getProtons()], 300, 605);
         fill(255);
         ellipse(400, 200, 300, 300);
         if (mousePressed && counter < 1 && mouseX < 267) {
@@ -56,6 +58,17 @@ public class Simulation extends PApplet {
         //System.out.println("Size: " + particles.size());
         //System.out.println("Counter: " + counter);
     }
+
+   // public void keyPressed() {
+        //if (keyCode == SHIFT && shiftCounter == 0) {
+           // shiftIsPressed = true;
+            //shiftCounter++;
+       // } else {
+          //  shiftIsPressed = false;
+           // shiftCounter = 0;
+        //}
+
+   // }
 
     public int getProtons() {
         int counter = 0;
